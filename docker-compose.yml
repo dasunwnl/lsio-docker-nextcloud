@@ -8,6 +8,11 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Asia/Colombo
+      - OBJECTSTORE_S3_HOST=${OBJECTSTORE_S3_HOST}
+      - OBJECTSTORE_S3_BUCKET=${OBJECTSTORE_S3_BUCKET}
+      - OBJECTSTORE_S3_KEY=${OBJECTSTORE_S3_KEY}
+      - OBJECTSTORE_S3_SECRET=${OBJECTSTORE_S3_SECRET}
+      - OBJECTSTORE_S3_REGION=${OBJECTSTORE_S3_REGION}
     volumes:
       - ./appdata/nextcloud/config:/config
       - ./appdata/nextcloud/data:/data
@@ -25,10 +30,8 @@ services:
       - MYSQL_DATABASE=${MYSQL_DATABASE}
       - MYSQL_USER=${MYSQL_USER}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
-   env_file:
-      - .env
-    volumes:
-      - /home/aptalca/appdata/mariadb:/config
+  volumes:
+      - ./appdata/mariadb:/config
     restart: unless-stopped
   swag:
     image: lscr.io/linuxserver/swag
@@ -45,7 +48,7 @@ services:
       - EMAIL=dasun@wnl.lk #optional
       - ONLY_SUBDOMAINS=true #optional
     volumes:
-      - /home/aptalca/appdata/swag:/config
+      - ./appdata/swag:/config
     ports:
       - 443:443
       - 80:80
