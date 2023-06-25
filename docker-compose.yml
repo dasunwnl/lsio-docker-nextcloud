@@ -40,7 +40,8 @@ services:
       - URL=wnl.lk
       - SUBDOMAINS=drive
       - VALIDATION=http
-      - DUCKDNSTOKEN=97654867496t0877648659765854
+      - EMAIL=dasun@wnl.lk #optional
+      - ONLY_SUBDOMAINS=true #optional
     volumes:
       - /home/aptalca/appdata/swag:/config
     ports:
