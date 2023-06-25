@@ -7,11 +7,6 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Asia/Colombo
-      - OBJECTSTORE_S3_HOST=${OBJECTSTORE_S3_HOST}
-      - OBJECTSTORE_S3_BUCKET=${OBJECTSTORE_S3_BUCKET}
-      - OBJECTSTORE_S3_KEY=${OBJECTSTORE_S3_KEY}
-      - OBJECTSTORE_S3_SECRET=${OBJECTSTORE_S3_SECRET}
-      - OBJECTSTORE_S3_REGION=${OBJECTSTORE_S3_REGION}
     volumes:
       - ./appdata/nextcloud/config:/config
       - ./appdata/nextcloud/data:/data
@@ -42,7 +37,7 @@ services:
       - PGID=1000
       - TZ=Asia/Colombo
       - URL=wnl.lk
-      - SUBDOMAINS=drive
+      - SUBDOMAINS=wnldrive
       - VALIDATION=http
       - EMAIL=dasun@wnl.lk #optional
       - ONLY_SUBDOMAINS=true #optional
