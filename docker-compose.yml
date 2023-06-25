@@ -7,7 +7,7 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Europe/London
+      - TZ=Asia/Colombo
     volumes:
       - ./appdata/nextcloud/config:/config
       - ./appdata/nextcloud/data:/data
@@ -21,7 +21,7 @@ services:
       - PUID=1000
       - PGID=1000
       - MYSQL_ROOT_PASSWORD=mariadbpassword
-      - TZ=Europe/London
+      - TZ=Asia/Colombo
       - MYSQL_DATABASE=nextcloud
       - MYSQL_USER=ncuser
       - MYSQL_PASSWORD=ncpassword
@@ -36,10 +36,10 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Europe/London
-      - URL=linuxserver-test.duckdns.org
-      - SUBDOMAINS=wildcard
-      - VALIDATION=duckdns
+      - TZ=Asia/Colombo
+      - URL=wnl.lk
+      - SUBDOMAINS=drive
+      - VALIDATION=http
       - DUCKDNSTOKEN=97654867496t0877648659765854
     volumes:
       - /home/aptalca/appdata/swag:/config
