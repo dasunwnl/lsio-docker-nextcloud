@@ -56,7 +56,7 @@ services:
       - PGID=1000
       - TZ=Asia/Colombo
       - URL=wnl.lk
-      - SUBDOMAINS=wnldrive,
+      - SUBDOMAINS=wnldrive,online,
       - VALIDATION=http
       - EMAIL=dasun@wnl.lk #optional
       - ONLY_SUBDOMAINS=true #optional
