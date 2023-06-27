@@ -32,6 +32,21 @@ services:
     volumes:
       - ./appdata/mariadb:/config
     restart: unless-stopped
+  libreoffice:
+    image: lscr.io/linuxserver/libreoffice:latest
+    container_name: libreoffice
+    security_opt:
+      - seccomp:unconfined #optional
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Colombo
+    volumes:
+      - ./appdata/libreoffice:/config
+    ports:
+      - 3000:3000
+      - 3001:3001
+    restart: unless-stopped
   swag:
     image: lscr.io/linuxserver/swag
     container_name: swag
