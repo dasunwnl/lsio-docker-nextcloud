@@ -32,21 +32,22 @@ services:
     volumes:
       - ./appdata/mariadb:/config
     restart: unless-stopped
-  libreoffice:
-    image: lscr.io/linuxserver/libreoffice:latest
-    container_name: libreoffice
-    security_opt:
-      - seccomp:unconfined #optional
+  online:
+    image: libreoffice/online:master
     environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Asia/Colombo
+      domain: ${NEXTCLOUD_DOMAIN}
+      username: ${LO_ONLINE_USERNAME}
+      password: ${LO_ONLINE_PASSWORD}
+      extra_params: ${LO_ONLINE_EXTRA_PARAMS}
+      DONT_GEN_SSL_CERT: 1
     volumes:
-      - ./appdata/libreoffice:/config
+      - ./appdata/online:/config
+    cap_add:
+      - MKNOD
     ports:
-      - 3000:3000
-      - 3001:3001
-    restart: unless-stopped
+      - "9980:9980"
+    restart:
+      unless-stopped
   swag:
     image: lscr.io/linuxserver/swag
     container_name: swag
