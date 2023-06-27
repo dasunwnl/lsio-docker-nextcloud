@@ -7,13 +7,22 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Asia/Colombo
-      - DOCKER_MODS=linuxserver/mods:nextcloud-memories|linuxserver/mods:nextcloud-mediadc
     volumes:
       - ./appdata/nextcloud/config:/config
       - ./appdata/nextcloud/data:/data
     depends_on:
       - mariadb
+      - redis
+      - imaginary
     restart: unless-stopped
+  imaginary:
+    image: nextcloud/aio-imaginary:latest
+    container_name: imaginary
+    restart: unless-stopped
+  redis:
+    image: redis:alpine
+    container_name: redis
+    restart: unless-stopped 
   mariadb:
     image: lscr.io/linuxserver/mariadb
     container_name: mariadb
@@ -38,15 +47,13 @@ services:
       - PGID=1000
       - TZ=Asia/Colombo
       - URL=wnl.lk
-      - SUBDOMAINS=wnldrive,dashboard,
+      - SUBDOMAINS=wnldrive,
       - VALIDATION=http
       - EMAIL=dasun@wnl.lk #optional
       - ONLY_SUBDOMAINS=true #optional
-      - DOCKER_MODS=linuxserver/mods:swag-dashboard
     volumes:
       - ./appdata/swag:/config
     ports:
       - 443:443
       - 80:80
-      - 81:81
     restart: unless-stopped
