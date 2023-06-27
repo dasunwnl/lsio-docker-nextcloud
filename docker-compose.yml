@@ -13,11 +13,6 @@ services:
     depends_on:
       - mariadb
       - redis
-      - imaginary
-    restart: unless-stopped
-  imaginary:
-    image: nextcloud/aio-imaginary:latest
-    container_name: imaginary
     restart: unless-stopped
   redis:
     image: redis:alpine
