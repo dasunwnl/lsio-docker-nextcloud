@@ -44,8 +44,6 @@ services:
       - ./appdata/online:/config
     cap_add:
       - MKNOD
-    ports:
-      - "9980:9980"
     restart:
       unless-stopped
   swag:
